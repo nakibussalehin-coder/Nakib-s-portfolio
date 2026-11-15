@@ -13,15 +13,29 @@ collections:
         label: Selected Work
         file: content/work.json
         fields:
-          - name: items
-            label: Projects
+          - name: services
+            label: Services
             widget: list
-            summary: "{{fields.category}}: {{fields.title}}"
+            summary: "{{fields.name}}"
             fields:
-              - {label: Title, name: title, widget: string}
-              - {label: Category, name: category, widget: select, options: [Graphics Design, Video Editing, Voice Over, Meta Marketing]}
-              - {label: Image (optional), name: image, widget: image, required: false}
-              - {label: Link (Drive/YouTube, optional), name: link, widget: string, required: false}
+              - {label: Category name (e.g. Graphics Design, or anything you want), name: name, widget: string}
+              - name: projects
+                label: Projects (subcategories)
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - {label: Title (e.g. Banner, Logo, Social Media), name: title, widget: string}
+                  - {label: Link (Drive/YouTube, optional), name: link, widget: string, required: false}
+                  - name: images
+                    label: Images (upload many)
+                    widget: list
+                    required: false
+                    field: {label: Image, name: image, widget: image}
+                  - name: videos
+                    label: Videos (mp4, under 25 MB each)
+                    widget: list
+                    required: false
+                    field: {label: Video, name: video, widget: file}
 
       - name: site
         label: Contact & Stats
