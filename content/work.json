@@ -1,28 +1,27 @@
 {
-  "items": [
+  "services": [
     {
-      "title": "Brand Poster Project",
-      "category": "Graphics Design",
-      "image": "/uploads/artboard-1.png",
-      "link": ""
+      "name": "Graphics Design",
+      "projects": [
+        {"title": "Brand Poster Project", "link": "", "images": ["/uploads/artboard-1.png"], "videos": []},
+        {"title": "Product Reel", "link": "", "images": ["/uploads/1000123547.jpg"], "videos": []}
+      ]
     },
     {
-      "title": "Product Reel",
-      "category": "Graphics Design",
-      "image": "/uploads/1000123547.jpg",
-      "link": ""
+      "name": "Video Editing",
+      "projects": []
     },
     {
-      "title": "Ad Campaign Case Study",
-      "category": "Meta Marketing",
-      "image": "",
-      "link": ""
+      "name": "Voice Over",
+      "projects": [
+        {"title": "Bangla Voice Over", "link": "", "images": [], "videos": []}
+      ]
     },
     {
-      "title": "Bangla Voice Over",
-      "category": "Voice Over",
-      "image": "",
-      "link": ""
+      "name": "Meta Marketing",
+      "projects": [
+        {"title": "Ad Campaign Case Study", "link": "", "images": [], "videos": []}
+      ]
     }
   ]
 }
