@@ -9,7 +9,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nakibus Salehin | Creative Designer & Meta Marketer</title>
+<title>Nakibus Salehin | Creative Designer, Video Editor & Meta Marketer</title>
 <style>
   :root {
     --grad: linear-gradient(135deg, #6a4dff 0%, #3b2fb8 55%, #1a1560 100%);
@@ -133,6 +133,60 @@
   .videos video { width: 100%; border-radius: 12px; background: #000; margin-bottom: 10px; }
   .project-link { color: var(--accent-2); font-size: 0.9rem; }
 
+  /* Category cards (Selected Work) */
+  .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+  .cat-card {
+    position: relative; overflow: hidden; text-align: center; padding: 36px 24px;
+    border-radius: 24px; background: var(--card); border: 1px solid var(--border);
+    color: var(--text); cursor: pointer; font: inherit;
+    animation: fadeUp .6s ease backwards;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .cat-card:hover { transform: translateY(-8px); border-color: rgba(124,92,255,.6); box-shadow: 0 20px 50px rgba(124,92,255,.25); }
+  .cat-card::after {
+    content: ""; position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,.14), transparent);
+    transform: skewX(-20deg); animation: shine 4.5s ease-in-out infinite; pointer-events: none;
+  }
+  .cat-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 80px; height: 80px; border-radius: 24px; background: var(--grad);
+    font-size: 2.2rem; margin-bottom: 18px; box-shadow: 0 12px 30px rgba(124,92,255,.4);
+    animation: float 3.2s ease-in-out infinite;
+  }
+  .cat-card h3 { font-size: 1.2rem; margin-bottom: 6px; }
+  .cat-card small { color: var(--muted); font-size: .9rem; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes shine { 0% { left: -75%; } 60%, 100% { left: 125%; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+  /* Modal (sub-sections and project preview) */
+  .modal { position: fixed; inset: 0; z-index: 200; background: rgba(6,5,20,.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .modal[hidden], .lightbox[hidden] { display: none; }
+  .modal-box { width: 100%; max-width: 980px; max-height: 88vh; overflow-y: auto; background: #14113a; border: 1px solid var(--border); border-radius: 24px; padding: 24px; animation: fadeUp .35s ease backwards; }
+  .modal-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; position: sticky; top: -24px; background: #14113a; padding: 4px 0 14px; z-index: 2; }
+  .modal-bar h3 { flex: 1; text-align: center; font-size: 1.3rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .m-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 16px; border-radius: 999px; cursor: pointer; font: inherit; }
+  .m-btn:hover { border-color: var(--accent); }
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .proj-tile { position: relative; aspect-ratio: 4/3; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); background: linear-gradient(160deg,#3b2fb8,#1a1560); cursor: pointer; padding: 0; transition: transform .3s; }
+  .proj-tile:hover { transform: scale(1.03); }
+  .proj-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .proj-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,10,36,.9), transparent 55%); }
+  .proj-name { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 1; color: #fff; font-weight: 700; text-align: left; font-size: .95rem; }
+  .proj-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--accent-2); }
+  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 18px; }
+  .shot { padding: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: none; cursor: zoom-in; }
+  .shot img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; transition: transform .3s; }
+  .shot:hover img { transform: scale(1.05); }
+  .vids video { width: 100%; border-radius: 16px; background: #000; margin-bottom: 14px; }
+  .proj-link { display: inline-block; margin-top: 10px; color: var(--accent-2); }
+  .empty { color: var(--muted); }
+
+  /* Full image preview */
+  .lightbox { position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,.92); display: flex; align-items: center; justify-content: center; padding: 20px; cursor: zoom-out; }
+  .lightbox img { max-width: 100%; max-height: 92vh; border-radius: 12px; }
+
   /* Stats */
   .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
   .stat { text-align: center; padding: 28px; border-radius: 18px; background: var(--card); border: 1px solid var(--border); }
@@ -187,7 +241,7 @@
 <header class="hero">
   <div class="hero-inner">
     <span class="tag">● Available for new projects</span>
-    <h1>Hi, I'm <span>Nakibus Salehin</span><br>Creative Designer & Meta Marketer</h1>
+    <h1>Hi, I'm <span>Nakibus Salehin</span><br>Creative Designer, Video Editor & Meta Marketer</h1>
     <p>I help brands stand out with graphics design, video editing, Bangla voice over, and Meta marketing that brings real results.</p>
     <a href="#work" class="btn">View My Work</a>
     <a href="#contact" class="btn ghost">Contact Me</a>
@@ -269,6 +323,18 @@
   </div>
 </section>
 
+<div class="modal" id="modal" hidden>
+  <div class="modal-box">
+    <div class="modal-bar">
+      <button class="m-btn" id="modal-back" hidden>← Back</button>
+      <h3 id="modal-title"></h3>
+      <button class="m-btn" id="modal-close" aria-label="Close">✕</button>
+    </div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+<div class="lightbox" id="lightbox" hidden><div id="lb-body"></div></div>
+
 <footer>
   © 2026 Nakibus Salehin. All rights reserved.
 </footer>
@@ -292,21 +358,94 @@
     io.observe(el);
   }
 
+  const CAT_ICONS = [[/graphic|design/i, '🎨'], [/video|edit/i, '🎬'], [/voice|audio/i, '🎙️'], [/meta|market|ads?\b/i, '📈']];
+  let SERVICES = [];
+  let view = null;
+
+  function iconFor(sv) {
+    if (sv.icon) return sv.icon;
+    const hit = CAT_ICONS.find(([re]) => re.test(sv.name || ''));
+    return hit ? hit[1] : '✦';
+  }
+
+  function renderCategories(services) {
+    SERVICES = services.filter(sv => (sv.projects || []).length);
+    document.getElementById('work-grid').innerHTML = SERVICES.length
+      ? `<div class="cat-grid">${SERVICES.map((sv, i) => `
+          <button class="cat-card" style="animation-delay:${i * 0.15}s" data-cat="${i}">
+            <span class="cat-icon">${esc(iconFor(sv))}</span>
+            <h3>${esc(sv.name)}</h3>
+            <small>${sv.projects.length} project</small>
+          </button>`).join('')}</div>`
+      : '';
+  }
+
+  const modal = document.getElementById('modal');
+  const mBody = document.getElementById('modal-body');
+  const mTitle = document.getElementById('modal-title');
+  const mBack = document.getElementById('modal-back');
+  const lb = document.getElementById('lightbox');
+  const lbBody = document.getElementById('lb-body');
+
+  function showModal() { modal.hidden = false; document.body.style.overflow = 'hidden'; }
+  function closeModal() { modal.hidden = true; document.body.style.overflow = ''; closeLightbox(); }
+  function openLightbox(src) { lbBody.innerHTML = `<img src="${esc(src)}" alt="">`; lb.hidden = false; }
+  function closeLightbox() { lb.hidden = true; lbBody.innerHTML = ''; }
+
+  function openCategory(i) {
+    const sv = SERVICES[i];
+    view = { type: 'cat', i };
+    mTitle.textContent = sv.name;
+    mBack.hidden = true;
+    mBody.innerHTML = `<div class="proj-grid">${sv.projects.map((p, j) => {
+      const cover = (p.images || []).find(Boolean);
+      const thumb = cover ? `<img src="${esc(cover)}" alt="">` : '<span class="proj-ph">✦</span>';
+      return `<button class="proj-tile" data-proj="${j}">${thumb}<span class="proj-name">${esc(p.title)}</span></button>`;
+    }).join('')}</div>`;
+    showModal();
+  }
+
+  function openProject(i, j) {
+    const p = SERVICES[i].projects[j];
+    view = { type: 'proj', i, j };
+    mTitle.textContent = p.title;
+    mBack.hidden = false;
+    const imgs = (p.images || []).filter(Boolean).map(src =>
+      `<button class="shot" data-full="${esc(src)}"><img src="${esc(src)}" alt="" loading="lazy"></button>`).join('');
+    const vids = (p.videos || []).filter(Boolean).map(src =>
+      `<video src="${esc(src)}" controls playsinline preload="metadata"></video>`).join('');
+    const link = p.link ? `<a class="proj-link" href="${esc(p.link)}" target="_blank" rel="noopener">Open link ↗</a>` : '';
+    const body = (imgs ? `<div class="shots">${imgs}</div>` : '') + (vids ? `<div class="vids">${vids}</div>` : '') + link;
+    mBody.innerHTML = body || '<p class="empty">Ekhono kichu add kora hoyni.</p>';
+  }
+
+  document.getElementById('work-grid').addEventListener('click', e => {
+    const c = e.target.closest('[data-cat]');
+    if (c) openCategory(+c.dataset.cat);
+  });
+  mBody.addEventListener('click', e => {
+    const t = e.target.closest('[data-proj]');
+    if (t) return openProject(view.i, +t.dataset.proj);
+    const s = e.target.closest('[data-full]');
+    if (s) openLightbox(s.dataset.full);
+  });
+  mBack.addEventListener('click', () => openCategory(view.i));
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  lb.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (!lb.hidden) closeLightbox();
+    else if (!modal.hidden) closeModal();
+  });
+
   async function init() {
     const [work, site] = await Promise.all([
       fetch('content/work.json').then(r => r.json()),
       fetch('content/site.json').then(r => r.json())
     ]);
 
-    document.getElementById('work-grid').innerHTML = (work.services || []).map(sv => {
-      const projects = (sv.projects || []).map(p => {
-        const imgs = (p.images || []).filter(Boolean).map(src => `<img src="${esc(src)}" alt="${esc(p.title)}" loading="lazy">`).join('');
-        const vids = (p.videos || []).filter(Boolean).map(src => `<video src="${esc(src)}" controls playsinline preload="metadata"></video>`).join('');
-        const link = p.link ? `<a class="project-link" href="${esc(p.link)}" target="_blank" rel="noopener">View ↗</a>` : '';
-        return `<article class="project"><h4>${esc(p.title)}</h4>${imgs ? `<div class="gallery">${imgs}</div>` : ''}${vids ? `<div class="videos">${vids}</div>` : ''}${link}</article>`;
-      }).join('');
-      return projects ? `<div class="service"><h3 class="service-title">${esc(sv.name)}</h3><div class="project-grid">${projects}</div></div>` : '';
-    }).join('');
+    renderCategories(work.services || []);
 
     document.getElementById('stats-grid').innerHTML = (site.stats || []).map(s =>
       `<div class="stat"><strong data-count="${esc(s.number)}" data-suffix="${esc(s.suffix)}">0${esc(s.suffix)}</strong><span>${esc(s.label)}</span></div>`
