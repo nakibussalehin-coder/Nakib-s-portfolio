@@ -3,24 +3,52 @@
     {
       "name": "Graphics Design",
       "projects": [
-        {"title": "Brand Poster Project", "link": "", "images": ["/uploads/artboard-1.png"], "videos": []},
-        {"title": "Product Reel", "link": "", "images": ["/uploads/1000123547.jpg"], "videos": []}
+        {
+          "title": "Brand Poster Project",
+          "link": "",
+          "images": [
+            "/uploads/artboard-1.png"
+          ],
+          "videos": []
+        },
+        {
+          "title": "Product Reel",
+          "link": "",
+          "images": [
+            "/uploads/1000123547.jpg"
+          ],
+          "videos": []
+        }
       ]
     },
     {
       "name": "Video Editing",
-      "projects": []
+      "projects": [
+        {
+          "title": "Talking Head"
+        }
+      ]
     },
     {
       "name": "Voice Over",
       "projects": [
-        {"title": "Bangla Voice Over", "link": "", "images": [], "videos": []}
+        {
+          "title": "Bangla Voice Over",
+          "link": "",
+          "images": [],
+          "videos": []
+        }
       ]
     },
     {
       "name": "Meta Marketing",
       "projects": [
-        {"title": "Ad Campaign Case Study", "link": "", "images": [], "videos": []}
+        {
+          "title": "Ad Campaign Case Study",
+          "link": "",
+          "images": [],
+          "videos": []
+        }
       ]
     }
   ]
